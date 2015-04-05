@@ -24,15 +24,16 @@ class WorksController < ApplicationController
   # POST /works
   # POST /works.json
   def create
-    @work = Work.new(work_params)
-
-    respond_to do |format|
+    if request.xhr?
+      @work = Work.new(work_params)
       if @work.save
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
-      else
-        format.html { render action: 'new' }
+        render :json => {:success => true}
       end
+    else
+     render :json => {:success => false}
     end
+    #@work = Work.new(work_params)
+
   end
 
   # PATCH/PUT /works/1

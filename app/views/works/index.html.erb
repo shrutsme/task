@@ -1,39 +1,45 @@
+
 <h1>Listing works</h1>
+<style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
 
   <div class="input-group">
-      <input type="text" class="form-control"id="addTask" placeholder="Add a task here!" size =100>
+      <input type="text" class="form-control" id="addTask" placeholder="Add a task here!" size =100>
 
   </div>
 <script>
-
-$( "#addTask" ).change(function() {
-  alert( "Handler for .change() called." );
+$(document).ready(function() {
+  // $( "#sortable" ).sortable();
+  $("#addTask").keyup(function (e) {
+      if (e.keyCode == 13) {
+          $.ajax({
+              url: '../works',
+              type: 'POST',
+              dataType : 'json',
+              data: {work:{ name: "John", description: "Boston" }}
+            })
+          .done(function() {
+            alert( "Handler for .change() called.");
+          })
+          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+          })
+      }
+  });  
 });
 </script>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div class="container">
+  <ul id="sortable">
     <% @works.each do |work| %>
-      <tr>
-        <td><%= work.name %></td>
-        <td><%= work.description %></td>
-        <td><%= link_to 'Show', work %></td>
-        <td><%= link_to 'Edit', edit_work_path(work) %></td>
-        <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li ><%= work.name %>  </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
 
 <br>
 
