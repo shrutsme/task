@@ -17,7 +17,10 @@
 <div class="container">
   <ul id="sortable">
     <% @works.each do |work| %>
-      <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= work.name %>
+      <li class="ui-state-default"><%= work.name %>
+        <button type="button" class="btn btn-default btn-sm" aria-label="Delete">
+        
+      </button>
  </li>
     <% end %>
   </ul>
