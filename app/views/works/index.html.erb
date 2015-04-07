@@ -18,8 +18,8 @@
   <ul id="sortable">
     <% @works.each do |work| %>
       <li class="ui-state-default"><%= work.name %>
-        <button type="button" class="btn btn-default btn-sm" aria-label="Delete">
-        
+        <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
+        <i class="fa fa-trash-o "></i>
       </button>
  </li>
     <% end %>
