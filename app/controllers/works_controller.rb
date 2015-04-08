@@ -27,13 +27,11 @@ class WorksController < ApplicationController
     if request.xhr?
       @work = Work.new(work_params)
       if @work.save
-        render :json => {:success => true}
+        render :json => {:id => @work.id}
       end
     else
-     render :json => {:success => false}
+     render :json => {:id => 0}
     end
-    #@work = Work.new(work_params)
-
   end
 
   # PATCH/PUT /works/1
