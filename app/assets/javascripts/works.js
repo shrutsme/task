@@ -1,5 +1,19 @@
 $(document).ready(function() {
   $("#sortable" ).sortable();
+  $("#sortable").on('click','li',function(event){
+    var Id = $(this).data("id");
+    $.ajax({
+              type: 'DELETE',
+              url:'../works/'+Id,
+            })
+          .done(function() {  
+               alert( "sucess.");
+          })
+          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+          })
+
+  });
   $("#addTask").keyup(function (e) {
       if (e.keyCode == 13) {
         var name_tsk = document.getElementById("addTask").value;
@@ -12,7 +26,7 @@ $(document).ready(function() {
           .done(function(data) {
             if (data.id != '0')
             { 
-              $("#sortable").prepend('<li class="ui-state-default" id=data.id>'+name_tsk+'<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></li>');
+              $("#sortable").prepend('<li class="ui-state-default" data-id=data.id>'+name_tsk+'<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></li>');
             }
             else
             {

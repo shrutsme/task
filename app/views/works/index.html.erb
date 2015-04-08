@@ -17,7 +17,7 @@
 <div class="container">
   <ul id="sortable">
     <% @works.each do |work| %>
-      <li class="ui-state-default" id=<%= work.id%>> <%= work.name %>
+      <li class="ui-state-default" data-id=<%= work.id%>> <%= work.name %>
         <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
         <i class="fa fa-trash-o "></i>
       </button>

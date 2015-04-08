@@ -28,6 +28,8 @@ class WorksController < ApplicationController
       @work = Work.new(work_params)
       if @work.save
         render :json => {:id => @work.id}
+      else
+        render :json => {:id => 0}
       end
     else
      render :json => {:id => 0}
@@ -49,9 +51,9 @@ class WorksController < ApplicationController
   # DELETE /works/1
   # DELETE /works/1.json
   def destroy
-    @work.destroy
-    respond_to do |format|
-      format.html { redirect_to works_url }
+    if request.xhr?
+      @work.destroy
+      render :json => {:success => true}
     end
   end
 
