@@ -2,11 +2,14 @@ $(document).ready(function() {
   $("#sortable" ).sortable();
   $("#sortable").on('click','li',function(event){
     var Id = $(this).data("id");
+    var obj = this;
     $.ajax({
               type: 'DELETE',
               url:'../works/'+Id,
             })
           .done(function() {  
+               $(obj).remove();
+               console.log(obj);
                alert( "sucess.");
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -14,9 +17,11 @@ $(document).ready(function() {
           })
 
   });
+
   $("#addTask").keyup(function (e) {
       if (e.keyCode == 13) {
         var name_tsk = document.getElementById("addTask").value;
+        if (name_tsk.length  > 0){
           $.ajax({
               type: 'POST',
               url:'../works',
@@ -26,7 +31,8 @@ $(document).ready(function() {
           .done(function(data) {
             if (data.id != '0')
             { 
-              $("#sortable").prepend('<li class="ui-state-default" data-id=data.id>'+name_tsk+'<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></li>');
+              $("#addTask").val(" ");
+              $("#sortable").prepend('<li class="ui-state-default" data-id='+data.id+'>'+name_tsk+'<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></li>');
             }
             else
             {
@@ -36,8 +42,13 @@ $(document).ready(function() {
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
           })
-          
+        }
+        else
+        { // change it to modal
+          alert( "Enter information");
+        }
       }
+       
   });  
 });
 
