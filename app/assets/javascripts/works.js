@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("#sortable" ).sortable();
   $("#sortable").on('click','li',function(event){
-    var Id = $(this).data("id");
+  /*  var Id = $(this).data("id");
     var obj = this;
     $.ajax({
               type: 'DELETE',
@@ -15,7 +15,7 @@ $(document).ready(function() {
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
           })
-
+ */
   });
 
   $("#addTask").keyup(function (e) {
