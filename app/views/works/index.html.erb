@@ -5,7 +5,7 @@
 <style>
 
   #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 16px; height: 30px; font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
   #sortable li span { position: absolute; margin-left: -1.3em; }
   </style>
 
@@ -17,10 +17,10 @@
 <div class="container">
   <ul id="sortable">
     <% @works.each do |work| %>
-      <li class="ui-state-default" data-id=<%= work.id%>> <%= work.name %>
+      <li class="ui-state-default"   data-id=<%= work.id%>> <%= work.name %>
         <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
         <i class="fa fa-trash-o "></i>
-      </button>
+      </button> 
  </li>
     <% end %>
   </ul>
