@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $("#sortable" ).sortable();
   $("#sortable").on('click','li',function(event){
+    $("#taskList").velocity({translateX: "200px"});
   /*  var Id = $(this).data("id");
     var obj = this;
     $.ajax({
