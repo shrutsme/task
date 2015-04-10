@@ -1,4 +1,5 @@
 Task::Application.routes.draw do
+  devise_for :users
   resources :works
 
   get "pages/home"
