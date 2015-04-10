@@ -1,11 +1,11 @@
 
-<h1>Manage your daily tasks easily!!!</h1>
-  <div class="input-group" >
+<h1 class="text-center ">Manage your daily tasks easily!!!</h1><br>
+  <div class="form-group col-md-8 col-md-offset-1" >
       <input type="text" class="form-control" id="addTask" placeholder="Add a task here!" size =100>
 
   </div>
 
-<div class="container" id="taskList">
+<div class="col-md-10 col-md-offset-1" id="taskList">
   <ul id="sortable">
     <% @works.each do |work| %>
       <li class="ui-state-default"   data-id=<%= work.id%>> <%= work.name %>
