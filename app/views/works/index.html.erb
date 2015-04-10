@@ -1,14 +1,17 @@
 
 <h1 class="text-center ">Manage your daily tasks easily!!!</h1><br>
-  <div class="form-group col-md-8 col-md-offset-1" >
+  <div class="form-group col-md-8 col-md-offset-2" >
       <input type="text" class="form-control" id="addTask" placeholder="Add a task here!" size =100>
 
   </div>
 
-<div class="col-md-10 col-md-offset-1" id="taskList">
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-6 col-md-offset-2" id="taskList">
   <ul id="sortable">
     <% @works.each do |work| %>
-      <li class="ui-state-default"   data-id=<%= work.id%>> <%= work.name %>
+      <li class="ui-state"   data-id=<%= work.id%>> <%= work.name %>
         <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
         <i class="fa fa-trash-o "></i>
       </button> 
@@ -17,15 +20,19 @@
   </ul>
 </div>
 
-<div class="container" id="detailedTask">
-  <div class="input-group">
+<div style="display:none" class="col-md-4"   id="detailedTask">
+  <div class="form-group">
     <input type="text" class="form-control" id="descTask" placeholder="Add description!">
-    <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
+  </div>
+  <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
         <i class="fa fa-trash-o "></i>
       </button>
-  </div>
 </div>
 
+
+
+</div>
+</div>
 <br>
 
 <%= link_to 'New Work', new_work_path %>

@@ -1,3 +1,7 @@
-#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 16px; height: 30px; font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
-#sortable li span { position: absolute; margin-left: -1.3em; }
+#sortable { list-style-type: none; margin: 0; padding: 10;  }
+#sortable li { margin: 0 3px 3px 3px; padding-left: 1.5em; font-size: 16px; height: 30px; font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
+.ui-state{border: 1px solid #d3d3d3;
+	font-weight: normal;
+	color: #555555;
+	border-radius: 10px;
+}
