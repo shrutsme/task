@@ -2,6 +2,7 @@ $(document).ready(function() {
   $("#sortable" ).sortable();
   $("#sortable").on('click','li',function(event){
     $("#taskList").velocity({translateX: "200px"});
+    $("#sortable").before('<div class="container" id="detailedTask"><div class="input-group"><input type="text" class="form-control" id="descTask" placeholder="Add description!"><button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></div></div>');
   /*  var Id = $(this).data("id");
     var obj = this;
     $.ajax({
