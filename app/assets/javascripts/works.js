@@ -1,6 +1,10 @@
 $(document).ready(function() {
   
   $("#lisort" ).sortable();
+  $("#hide").click(function(event) {
+    $("#detailedTask").hide();
+    $("#taskList").velocity({translateX: "70px"});
+  });
 
   $("#Delete").click(function(event) {
     /* Act on the event */
