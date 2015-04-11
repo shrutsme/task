@@ -41,13 +41,15 @@ class WorksController < ApplicationController
   # PATCH/PUT /works/1
   # PATCH/PUT /works/1.json
   def update
-    respond_to do |format|
-      if @work.update(work_params)
-        format.html { redirect_to @work, notice: 'Work was successfully updated.' }
+    @work = Work.find(params[:id])
+    puts params[:desc];
+    @work.description = params[:desc]
+     if @work.save
+        render :json => {:id => @work.id}
       else
-        format.html { render action: 'edit' }
+        render :json => {:id => 0}
       end
-    end
+
   end
 
   # DELETE /works/1

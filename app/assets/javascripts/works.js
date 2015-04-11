@@ -35,7 +35,7 @@ $(document).ready(function() {
     $("#detailedTask h2").html(name_task);
     $('#detailedTask').attr("data-id", Id)
     $("#detailedTask").show();
-  
+    $('#descTask').val("");
 
     $.ajax({
               type: 'GET',
@@ -47,7 +47,11 @@ $(document).ready(function() {
                if (data.desc != null)
                 { // populate text
                   $('#descTask').val(data.desc);
-                  console.log(data);
+                  console.log("dat");
+                }
+                else
+                {
+                  console.log("null");
                 }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -56,6 +60,34 @@ $(document).ready(function() {
 
   });
 
+
+  $("#descTask").keyup(function (e) {
+    if (e.keyCode == 13) {
+      var Id =  $('#detailedTask').attr("data-id");
+      var desc_task = $('#descTask').val();
+      console.log(Id);
+      $.ajax({
+              type: 'PUT',
+              url:'../works/'+Id,
+              dataType : 'json',
+              data: {desc: desc_task }
+            })
+          .done(function(data) {
+            if (data.id != '0')
+            { 
+              $("#descTask").val(desc_task);
+              alert( "saved.");
+            }
+            else
+            {
+               alert( "information not saved.");
+            }
+          })
+          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+          })
+    }
+  });
 
   $("#addTask").keyup(function (e) {
       if (e.keyCode == 13) {
