@@ -10,6 +10,8 @@ class WorksController < ApplicationController
   # GET /works/1
   # GET /works/1.json
   def show
+     @work = Work.find(params[:id])
+     render :json => {:name => @work.name, :desc => @work.description}
   end
 
   # GET /works/new

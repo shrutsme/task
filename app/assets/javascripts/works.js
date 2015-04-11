@@ -35,9 +35,27 @@ $(document).ready(function() {
     $("#detailedTask h2").html(name_task);
     $('#detailedTask').attr("data-id", Id)
     $("#detailedTask").show();
+  
 
-    $("#detailedTask").velocity({translateX: "-100px"});
+    $.ajax({
+              type: 'GET',
+              url:'../works/'+Id,
+              dataType: "json"
+            })
+          .done(function(data) {  
+               
+               if (data.desc != null)
+                { // populate text
+                  $('#descTask').val(data.desc);
+                  console.log(data);
+                }
+          })
+          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+          }) 
+
   });
+
 
   $("#addTask").keyup(function (e) {
       if (e.keyCode == 13) {
