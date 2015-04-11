@@ -1,28 +1,37 @@
 $(document).ready(function() {
   $("#lisort" ).sortable();
-  $("#lisort").on('click','li',function(event){
-    $("#taskList").velocity({translateX: "-100px"});
-    var Id = $(this).data("id");
-    var name_task = $(this).text();
-    $("#detailedTask h2").html(name_task);
-    $("#detailedTask").show();
-    $("#detailedTask").velocity({translateX: "-100px"});
-  //  $("#sortable").insert('<div class="container" id="detailedTask"><div class="input-group"><input type="text" class="form-control" id="descTask" placeholder="Add description!"><button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></div></div>');
-  /*  var Id = $(this).data("id");
-    var obj = this;
+
+  $("#Delete").click(function(event) {
+    /* Act on the event */
+    // add pop-up
+    var Id = $('#detailedTask').attr("data-id");
+    
+    var obj = $('li[data-id='+Id+']');
+    console.log(obj);
     $.ajax({
               type: 'DELETE',
               url:'../works/'+Id,
             })
           .done(function() {  
                $(obj).remove();
-               console.log(obj);
-               alert( "sucess.");
+               $("#detailedTask").hide();
+               $("#taskList").velocity({translateX: "100px"});
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
-          })
- */
+          }) 
+
+  });
+
+  $("#lisort").on('click','li',function(event){
+    $("#taskList").velocity({translateX: "-100px"});
+    var Id = $(this).data("id");
+    var name_task = $(this).text();
+    $("#detailedTask h2").html(name_task);
+    $('#detailedTask').attr("data-id", Id)
+    $("#detailedTask").show();
+
+    $("#detailedTask").velocity({translateX: "-100px"});
   });
 
   $("#addTask").keyup(function (e) {

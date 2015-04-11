@@ -18,12 +18,15 @@
   </ul>
 </div>
 
-<div style="display:none" class="col-md-4"   id="detailedTask">
-  <h2>New</h2>
+<div  class="col-md-4 jumbotron"   id="detailedTask" data-id=''>
+  <h2 >New</h2>
   <div class="form-group">
     <input type="text" class="form-control" id="descTask" placeholder="Add description!">
   </div>
-  <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
+  <button class="btn btn-default btn-xs pull-left" aria-label="hide">
+        <i class="fa fa-chevron-circle-right"></i>
+      </button>
+  <button id="Delete" class="btn btn-danger btn-xs pull-right" aria-label="Delete">
         <i class="fa fa-trash-o "></i>
       </button>
 </div>
@@ -34,7 +37,3 @@
 </div>
 <br>
 
-<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
-        <i class="fa fa-trash-o "></i>
-      </button>
-<%= link_to 'New Work', new_work_path %>
