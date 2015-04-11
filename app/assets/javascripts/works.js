@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   $("#lisort" ).sortable();
 
   $("#Delete").click(function(event) {
@@ -15,7 +16,7 @@ $(document).ready(function() {
           .done(function() {  
                $(obj).remove();
                $("#detailedTask").hide();
-               $("#taskList").velocity({translateX: "100px"});
+               $("#taskList").velocity({translateX: "70px"});
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -48,7 +49,8 @@ $(document).ready(function() {
             if (data.id != '0')
             { 
               $("#addTask").val(" ");
-              $("#sortable").prepend('<li class="ui-state-default" data-id='+data.id+'>'+name_tsk+'<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></li>');
+              $("#addTask").attr("placeholder","Add a task here!");
+              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><span>'+name_tsk+'</span></li>');
             }
             else
             {
