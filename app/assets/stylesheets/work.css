@@ -1,7 +1,14 @@
-#sortable { list-style-type: none; margin: 0; padding: 10;  }
-#sortable li { margin: 0 3px 3px 3px; padding-left: 1.5em; font-size: 16px; height: 30px; font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
-.ui-state{border: 1px solid #d3d3d3;
+#lisort { list-style-type: none; margin: 0; padding: 10;  }
+#lisort li { margin: 0 3px 3px 3px; padding-left: 1.5em; font-size: 16px;  font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
+
+lisort {text-align: center;}
+.list-group-item{
+	border: 1px solid #d3d3d3;
 	font-weight: normal;
 	color: #555555;
-	border-radius: 10px;
+	border-radius: 5px;
+	height: 40px;
+}
+.title{
+	text-decoration: color black;
 }

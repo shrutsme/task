@@ -5,22 +5,21 @@
 
   </div>
 
-<div class="container-fluid">
+<div class="container">
 <div class="row">
 
 <div class="col-md-6 col-md-offset-2" id="taskList">
-  <ul id="sortable">
+  <ul id="lisort" class="list-group">
     <% @works.each do |work| %>
-      <li class="ui-state"   data-id=<%= work.id%>> <%= work.name %>
-        <button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
-        <i class="fa fa-trash-o "></i>
-      </button> 
+      <li class="list-group-item"   data-id='<%= work.id%>'> <span><%= work.name %></span>
+         
  </li>
     <% end %>
   </ul>
 </div>
 
 <div style="display:none" class="col-md-4"   id="detailedTask">
+  <h2>New</h2>
   <div class="form-group">
     <input type="text" class="form-control" id="descTask" placeholder="Add description!">
   </div>
@@ -35,4 +34,7 @@
 </div>
 <br>
 
+<button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete">
+        <i class="fa fa-trash-o "></i>
+      </button>
 <%= link_to 'New Work', new_work_path %>

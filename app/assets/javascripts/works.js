@@ -1,7 +1,10 @@
 $(document).ready(function() {
-  $("#sortable" ).sortable();
-  $("#sortable").on('click','li',function(event){
+  $("#lisort" ).sortable();
+  $("#lisort").on('click','li',function(event){
     $("#taskList").velocity({translateX: "-100px"});
+    var Id = $(this).data("id");
+    var name_task = $(this).text();
+    $("#detailedTask h2").html(name_task);
     $("#detailedTask").show();
     $("#detailedTask").velocity({translateX: "-100px"});
   //  $("#sortable").insert('<div class="container" id="detailedTask"><div class="input-group"><input type="text" class="form-control" id="descTask" placeholder="Add description!"><button type="button" class="btn btn-default btn-xs pull-right" aria-label="Delete"><i class="fa fa-trash-o "></i></button></div></div>');
