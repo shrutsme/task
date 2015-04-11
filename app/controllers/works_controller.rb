@@ -1,10 +1,11 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @works = current_user.works
+   # @works = Work.all
   end
 
   # GET /works/1
@@ -16,7 +17,7 @@ class WorksController < ApplicationController
 
   # GET /works/new
   def new
-    @work = Work.new
+    @work = current_user.works.build
   end
 
   # GET /works/1/edit
@@ -27,7 +28,8 @@ class WorksController < ApplicationController
   # POST /works.json
   def create
     if request.xhr?
-      @work = Work.new(work_params)
+      @work = current_user.works.build(work_params)
+      #@work = Work.new(work_params)
       if @work.save
         render :json => {:id => @work.id}
       else
