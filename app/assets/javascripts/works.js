@@ -1,6 +1,7 @@
 $(document).ready(function() {
   
   $("#lisort" ).sortable();
+  $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
     $("#detailedTask").hide();
     $("#taskList").velocity({translateX: "70px"});
@@ -36,7 +37,7 @@ $(document).ready(function() {
     $('#detailedTask').attr("data-id", Id)
     $("#detailedTask").show();
     $('#descTask').val("");
-    $("#descTask").fadeTo( 0, 1);
+    
     $.ajax({
               type: 'GET',
               url:'../works/'+Id,

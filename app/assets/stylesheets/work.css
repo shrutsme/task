@@ -1,6 +1,6 @@
 #lisort { list-style-type: none; margin: 0; padding: 10;  }
 #lisort li { margin: 0 3px 3px 3px; padding-left: 1.5em; font-size: 16px;  font-family: Lato, 'Helvetica Neue',Helvetica, Arial, sans-serif }
-
+#descTask{opacity: 0.5}
 lisort {text-align: center;}
 .list-group-item{
 	border: 1px solid #d3d3d3;
