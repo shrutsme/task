@@ -29,7 +29,7 @@ $(document).ready(function() {
   });
 
   $("#lisort").on('click','li',function(event){
-    $("#taskList").velocity({translateX: "-100px"});
+    $("#taskList").velocity({translateX: "-70px"});
     var Id = $(this).data("id");
     var name_task = $(this).text();
     $("#detailedTask h2").html(name_task);
@@ -47,11 +47,10 @@ $(document).ready(function() {
                if (data.desc != null)
                 { // populate text
                   $('#descTask').val(data.desc);
-                  console.log("dat");
                 }
                 else
                 {
-                  console.log("null");
+                  $('#descTask').val("Add Description here!");
                 }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
