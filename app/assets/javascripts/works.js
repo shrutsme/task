@@ -36,7 +36,7 @@ $(document).ready(function() {
     $('#detailedTask').attr("data-id", Id)
     $("#detailedTask").show();
     $('#descTask').val("");
-
+    $("#descTask").fadeTo( 0, 1);
     $.ajax({
               type: 'GET',
               url:'../works/'+Id,
@@ -59,6 +59,10 @@ $(document).ready(function() {
 
   });
 
+ $("#descTask").click(function(event){
+    $("#descTask").fadeTo( 0, 1);
+
+ });
 
   $("#descTask").keyup(function (e) {
     if (e.keyCode == 13) {
@@ -76,6 +80,7 @@ $(document).ready(function() {
             { 
               $("#descTask").val(desc_task);
               alert( "saved.");
+              $("#descTask").fadeTo( 0, .5);
             }
             else
             {
