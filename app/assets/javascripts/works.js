@@ -30,34 +30,49 @@ $(document).ready(function() {
   });
 
   $("#lisort").on('click','li',function(event){
-    $("#taskList").velocity({translateX: "-70px"});
-    var Id = $(this).data("id");
-    var name_task = $(this).text();
-    $("#detailedTask h2").html(name_task);
-    $('#detailedTask').attr("data-id", Id)
-    $("#detailedTask").show();
-    $('#descTask').val("");
-    
-    $.ajax({
-              type: 'GET',
-              url:'../works/'+Id,
-              dataType: "json"
-            })
-          .done(function(data) {  
-               
-               if (data.desc != null)
-                { // populate text
-                  $('#descTask').val(data.desc);
-                }
-                else
-                {
-                  $('#descTask').val("Add Description here!");
-                }
-          })
-          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(errorThrown);
-          }) 
+    var chObj = $(this).children(':checkbox');
+    console.log($(chObj).is(':checked'));
+    if( $(chObj).is(':checked') 
+    {
+      /* mark the task as complete */
 
+      /* send post update request to the server */
+      
+      /* remove the li from the screen display */
+      /* show the total number of tasks complete */
+      console.log(chObj);
+    }
+    else  
+    { /* get the task details */
+
+      $("#taskList").velocity({translateX: "-70px"});
+      var Id = $(this).data("id");
+      var name_task = $(this).text();
+      $("#detailedTask h2").html(name_task);
+      $('#detailedTask').attr("data-id", Id)
+      $("#detailedTask").show();
+      $('#descTask').val("");
+      
+      $.ajax({
+                type: 'GET',
+                url:'../works/'+Id,
+                dataType: "json"
+              })
+            .done(function(data) {  
+                 
+                 if (data.desc != null)
+                  { // populate text
+                    $('#descTask').val(data.desc);
+                  }
+                  else
+                  {
+                    $('#descTask').val("Add Description here!");
+                  }
+            })
+            .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+              console.log(errorThrown);
+            }) 
+    }
   });
 
  $("#descTask").click(function(event){

@@ -7,7 +7,7 @@
     <div class="col-md-6 col-md-offset-2" id="taskList">
       <ul id="lisort" class="list-group">
         <% @works.each do |work| %>
-        <li class="list-group-item"   data-id='<%= work.id%>'> <span><%= work.name %></span>
+        <li class="list-group-item"   data-id='<%= work.id%>'>  <input type="checkbox" class="completion_check" aria-label="Task Completed?"> <span><%= work.name %></span>
         
       </li>
       <% end %>
