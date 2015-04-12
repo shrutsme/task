@@ -1,10 +1,12 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   # GET /works
   # GET /works.json
   def index
-    @works = current_user.works
+    if (current_user)
+      @works = current_user.works
+    end
    # @works = Work.all
   end
 
