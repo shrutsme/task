@@ -1,8 +1,17 @@
 
-$body-bg: 	#C8A0E1;
+
 $navbar-default-bg: #ecf0f1;
 @import 'bootstrap';
 
 .center {
      text-align: center;
 }
+.navbar {
+	background-color: rgba(0,0,250,0.6);
+	color: white;
+}
+.navbar-brand{
+	color: white;
+	background-color: white;
+}
+

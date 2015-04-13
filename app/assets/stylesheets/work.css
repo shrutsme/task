@@ -8,6 +8,8 @@ lisort {text-align: center;}
 	color: #555555;
 	border-radius: 5px;
 	height: 40px;
+	box-shadow: 100px,10px,10px, black;
+	z-index: 100;
 }
 .title{
 	text-decoration: color black;
@@ -20,3 +22,8 @@ lisort {text-align: center;}
 .panel-transparent {
         background: none;
     }
+
+.task-item{
+	box-shadow: 100px,10px,10px, black;
+	z-index: 100;
+}

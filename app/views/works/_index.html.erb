@@ -7,34 +7,34 @@
     <div class="col-md-6 col-md-offset-2" id="taskList">
       <ul id="lisort" class="list-group">
         <% @works.each do |work| %>
-          <% if work.status == false %>
-            <li class="list-group-item"   data-id='<%= work.id%>'>  <input type="checkbox" class="completion_check" aria-label="Task Completed?"> <span><%= work.name %></span>
-            </li>
-          <% end %>
+        <% if work.status == false %>
+        <li class="list-group-item task-item"   data-id='<%= work.id%>'>  <input type="checkbox" class="completion_check" aria-label="Task Completed?"> <span><%= work.name %></span>
+      </li>
+      <% end %>
       <% end %>
     </ul>
     <div class="col-md-4 panel panel-default panel-transparent" id="showCompleted" style="display:none">
-        <div >
-        <span id="completedTasks"> <%= @works.select{|work| work.status = "true" }.size %> </span> <span> Tasks Completed</span>
+      <div >
+        <span id="completedTasks"> <%= @works.select{|work| work.status ==true }.size %> </span> <span> Tasks Completed</span>
         
-        </div>
-        
-    </div>
-    </div>
-    <div style="display:none" class="col-md-4 jumbotron"   id="detailedTask" data-id=''>
-      <h2 >New</h2>
-      <div class="form-group" >
-        <textarea placeholder="Add description!" id="descTask" cols=30 rows =2
-        style="overflow:scroll" ></textarea>
       </div>
       
-      <button id="hide" class="btn btn-default btn-xs pull-left" aria-label="hide">
-      <i class="fa fa-chevron-circle-right"></i>
-      </button>
-      <button id="Delete" class="btn btn-danger btn-xs pull-right" aria-label="Delete">
-      <i class="fa fa-trash-o "></i>
-      </button>
     </div>
   </div>
+  <div style="display:none" class="col-md-4 jumbotron"   id="detailedTask" data-id=''>
+    <h2 >New</h2>
+    <div class="form-group" >
+      <textarea placeholder="Add description!" id="descTask" cols=30 rows =2
+      style="overflow:scroll" ></textarea>
+    </div>
+    
+    <button id="hide" class="btn btn-default btn-xs pull-left" aria-label="hide">
+    <i class="fa fa-chevron-circle-right"></i>
+    </button>
+    <button id="Delete" class="btn btn-danger btn-xs pull-right" aria-label="Delete">
+    <i class="fa fa-trash-o "></i>
+    </button>
+  </div>
+</div>
 </div>
 <br>

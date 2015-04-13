@@ -12,25 +12,44 @@ $(document).ready(function() {
 
   $("#Delete").click(function(event) {
     /* Act on the event */
-    // add pop-up
-    var Id = $('#detailedTask').attr("data-id");
-    
-    var obj = $('li[data-id='+Id+']');
-    console.log(obj);
-    $.ajax({
-              type: 'DELETE',
-              url:'../works/'+Id,
-            })
-          .done(function() {  
-               $(obj).remove();
-               $("#detailedTask").hide();
-             //  $("#taskList").velocity({translateX: "70px"});
-               $("#taskList").velocity("reverse");
+    var confirm = false;
+    bootbox.dialog({
+    message: "I am a custom dialog",
+    title: "Custom title",
+    buttons: {
+      success: {
+        label: "Cancel!",
+        className: "btn-default",
+        callback: function() {
+          confirm = true;
+        }
+      },
+      danger: {
+        label: "OK!",
+        className: "btn-danger",
+        callback: function() {
+          var Id = $('#detailedTask').attr("data-id");
+      
+      var obj = $('li[data-id='+Id+']');
+      console.log(obj);
+      $.ajax({
+                type: 'DELETE',
+                url:'../works/'+Id,
+              })
+            .done(function() {  
+                 $(obj).remove();
+                 $("#detailedTask").hide();
+               //  $("#taskList").velocity({translateX: "70px"});
+                 $("#taskList").velocity("reverse");
 
-          })
-          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log(errorThrown);
-          }) 
+            })
+            .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+              console.log(errorThrown);
+            }) 
+        }
+      },
+    }
+  });
 
   });
 
@@ -55,7 +74,6 @@ $(document).ready(function() {
             { 
               /* remove the li from the screen display */
               $(liObj).remove();
-              bootbox.alert( data.id );
               complete_success = true;
               var num = parseInt($('#completedTasks').text())+1;
               $('#completedTasks').text(num);
@@ -65,24 +83,11 @@ $(document).ready(function() {
                 $("#taskList").velocity("reverse");
                 $('#detailedTask').hide();
               }
-                
-              
-              // add show a panel of total number of complete status
-            }
-            else
-            {
-               bootbox.alert( "information not saved.");
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
           })
-      
-
-      
-      
-      /* show the total number of tasks complete */
-      console.log(chObj);
     }
     else  
     { /* get the task details */
@@ -91,7 +96,7 @@ $(document).ready(function() {
       var name_task = $(this).text();
       $("#detailedTask h2").html(name_task);
       $('#detailedTask').attr("data-id", Id)
-      $("#detailedTask").show();
+      $("#detailedTask").velocity("transition.bounceRightIn");
       $('#descTask').val("");
       
       $.ajax({
@@ -136,12 +141,7 @@ $(document).ready(function() {
             if (data.id != '0')
             { 
               $("#descTask").val(desc_task);
-              bootbox.alert( "saved.");
               $("#descTask").fadeTo( 0, .5);
-            }
-            else
-            {
-               bootbox.alert( "information not saved.");
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -165,20 +165,12 @@ $(document).ready(function() {
             { 
               $("#addTask").val(" ");
               $("#addTask").attr("placeholder","Add a task here!");
-              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><input type="checkbox" class="completion_check" aria-label="Task Completed?">dfa<span>'+name_tsk+'</span></li>');
-            }
-            else
-            {
-               bootbox.alert( "information not saved.");
+              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><input type="checkbox" class="completion_check" aria-label="Task Completed?"><span>'+name_tsk+'</span></li>');
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
           })
-        }
-        else
-        { // change it to modal
-          bootbox.alert( "Enter information");
         }
       }
        

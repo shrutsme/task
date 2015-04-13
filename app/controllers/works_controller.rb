@@ -5,9 +5,9 @@ class WorksController < ApplicationController
   # GET /works.json
   def index
     if (current_user)
-      @works = current_user.works.select{|work| work.status = "false"} 
+      @works = current_user.works
     end
-   # @works = Work.all
+   
   end
 
   # GET /works/1
