@@ -4,8 +4,11 @@ $(document).ready(function() {
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
     $("#detailedTask").hide();
-    $("#taskList").velocity({translateX: "70px"});
+    $("#taskList").velocity("reverse");
   });
+  var num = parseInt($('#completedTasks').text());
+  if (num>0)
+    $("#showCompleted").show();
 
   $("#Delete").click(function(event) {
     /* Act on the event */
@@ -21,7 +24,9 @@ $(document).ready(function() {
           .done(function() {  
                $(obj).remove();
                $("#detailedTask").hide();
-               $("#taskList").velocity({translateX: "70px"});
+             //  $("#taskList").velocity({translateX: "70px"});
+               $("#taskList").velocity("reverse");
+
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown);
@@ -54,7 +59,14 @@ $(document).ready(function() {
               complete_success = true;
               var num = parseInt($('#completedTasks').text())+1;
               $('#completedTasks').text(num);
-              $('#detailedTask').hide();
+              $("#showCompleted").show();
+              if ($("#detailedTask").is(':visible'))
+              {
+                $("#taskList").velocity("reverse");
+                $('#detailedTask').hide();
+              }
+                
+              
               // add show a panel of total number of complete status
             }
             else

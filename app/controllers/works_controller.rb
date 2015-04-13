@@ -33,6 +33,7 @@ class WorksController < ApplicationController
       @work = current_user.works.build(work_params)
       #@work = Work.new(work_params)
       if @work.save
+        puts @work.status
         render :json => {:id => @work.id}
       else
         render :json => {:id => 0}
