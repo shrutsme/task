@@ -13,6 +13,13 @@
           <% end %>
       <% end %>
     </ul>
+    <div class="col-md-4 panel panel-default panel-transparent" id="showCompleted" style="display:none">
+        <div >
+        <span id="completedTasks"> <%= @works.select{|work| work.status = "true" }.size %> </span> <span> Tasks Completed</span>
+        
+        </div>
+        
+    </div>
     </div>
     <div style="display:none" class="col-md-4 jumbotron"   id="detailedTask" data-id=''>
       <h2 >New</h2>
@@ -27,15 +34,6 @@
       <button id="Delete" class="btn btn-danger btn-xs pull-right" aria-label="Delete">
       <i class="fa fa-trash-o "></i>
       </button>
-    </div>
-  </div>
-  <div class="row "> 
-    <div class="col-md-4 col-md-offset-2 panel panel-default panel-transparent" id="showCompleted" style="display:none">
-        <div >
-        <span id="completedTasks"> <%= @works.select{|work| work.status = "true" }.size %> </span> <span> Tasks Completed</span>
-        
-        </div>
-        
     </div>
   </div>
 </div>

@@ -55,7 +55,7 @@ $(document).ready(function() {
             { 
               /* remove the li from the screen display */
               $(liObj).remove();
-              alert( data.id );
+              bootbox.alert( data.id );
               complete_success = true;
               var num = parseInt($('#completedTasks').text())+1;
               $('#completedTasks').text(num);
@@ -71,7 +71,7 @@ $(document).ready(function() {
             }
             else
             {
-               alert( "information not saved.");
+               bootbox.alert( "information not saved.");
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -136,12 +136,12 @@ $(document).ready(function() {
             if (data.id != '0')
             { 
               $("#descTask").val(desc_task);
-              alert( "saved.");
+              bootbox.alert( "saved.");
               $("#descTask").fadeTo( 0, .5);
             }
             else
             {
-               alert( "information not saved.");
+               bootbox.alert( "information not saved.");
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -169,7 +169,7 @@ $(document).ready(function() {
             }
             else
             {
-               alert( "information not saved.");
+               bootbox.alert( "information not saved.");
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -178,7 +178,7 @@ $(document).ready(function() {
         }
         else
         { // change it to modal
-          alert( "Enter information");
+          bootbox.alert( "Enter information");
         }
       }
        
