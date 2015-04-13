@@ -46,13 +46,23 @@ class WorksController < ApplicationController
   # PATCH/PUT /works/1.json
   def update
     @work = Work.find(params[:id])
-    puts params[:desc];
-    @work.description = params[:desc]
-     if @work.save
-        render :json => {:id => @work.id}
-      else
-        render :json => {:id => 0}
-      end
+    if params.has_key?(:desc)
+      puts "desc";
+      @work.description = params[:desc]
+    elsif params.has_key?(:status)
+      @work.status = params[:status]
+    #  num = current_user.works.where(:all, :conditions => ["status = ?", params[:status]])
+     # puts num
+      # count the number of completed tasks 
+    else
+      render :json => {:id => 0}
+    end
+
+    if @work.save
+      render :json => {:id => @work.id}
+    else
+      render :json => {:id => 0}
+    end 
 
   end
 

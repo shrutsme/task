@@ -30,15 +30,42 @@ $(document).ready(function() {
   });
 
   $("#lisort").on('click','li',function(event){
+    var Id = $(this).data("id");
     var chObj = $(this).children(':checkbox');
     console.log($(chObj).is(':checked'));
-    if( $(chObj).is(':checked') 
-    {
+    if( $(chObj).is(':checked') )
+    {  var liObj = $(this);
+       var complete_success = false;
       /* mark the task as complete */
 
       /* send post update request to the server */
+      $.ajax({
+              type: 'PUT',
+              url:'../works/'+Id,
+              dataType : 'json',
+              data: {status: true }
+            })
+          .done(function(data) {
+            if (data.id != '0')
+            { 
+              /* remove the li from the screen display */
+              $(liObj).remove();
+              alert( "saved.");
+              complete_success = true;
+              // add show a panel of total number of complete status
+            }
+            else
+            {
+               alert( "information not saved.");
+            }
+          })
+          .fail(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(errorThrown);
+          })
       
-      /* remove the li from the screen display */
+          
+      
+      
       /* show the total number of tasks complete */
       console.log(chObj);
     }
@@ -46,7 +73,6 @@ $(document).ready(function() {
     { /* get the task details */
 
       $("#taskList").velocity({translateX: "-70px"});
-      var Id = $(this).data("id");
       var name_task = $(this).text();
       $("#detailedTask h2").html(name_task);
       $('#detailedTask').attr("data-id", Id)
