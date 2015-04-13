@@ -17,3 +17,6 @@ lisort {text-align: center;}
 	background-color: #D8DED5;
 
 }
+.panel-transparent {
+        background: none;
+    }

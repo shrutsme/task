@@ -50,8 +50,11 @@ $(document).ready(function() {
             { 
               /* remove the li from the screen display */
               $(liObj).remove();
-              alert( "saved.");
+              alert( data.id );
               complete_success = true;
+              var num = parseInt($('#completedTasks').text())+1;
+              $('#completedTasks').text(num);
+              $('#detailedTask').hide();
               // add show a panel of total number of complete status
             }
             else
@@ -63,7 +66,7 @@ $(document).ready(function() {
             console.log(errorThrown);
           })
       
-          
+
       
       
       /* show the total number of tasks complete */
@@ -150,7 +153,7 @@ $(document).ready(function() {
             { 
               $("#addTask").val(" ");
               $("#addTask").attr("placeholder","Add a task here!");
-              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><span>'+name_tsk+'</span></li>');
+              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><input type="checkbox" class="completion_check" aria-label="Task Completed?">dfa<span>'+name_tsk+'</span></li>');
             }
             else
             {

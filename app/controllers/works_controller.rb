@@ -5,7 +5,7 @@ class WorksController < ApplicationController
   # GET /works.json
   def index
     if (current_user)
-      @works = current_user.works
+      @works = current_user.works.select{|work| work.status = "false"} 
     end
    # @works = Work.all
   end
@@ -51,6 +51,7 @@ class WorksController < ApplicationController
       @work.description = params[:desc]
     elsif params.has_key?(:status)
       @work.status = params[:status]
+      puts @work.status
     #  num = current_user.works.where(:all, :conditions => ["status = ?", params[:status]])
      # puts num
       # count the number of completed tasks 
@@ -59,6 +60,7 @@ class WorksController < ApplicationController
     end
 
     if @work.save
+      puts @work.status
       render :json => {:id => @work.id}
     else
       render :json => {:id => 0}
