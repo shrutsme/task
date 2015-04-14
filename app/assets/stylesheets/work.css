@@ -16,7 +16,7 @@ lisort {text-align: center;}
 }
 
 #detailedTask{
-	background-color: #D8DED5;
+	background-color: #F08070;
 
 }
 .panel-transparent {
@@ -24,6 +24,9 @@ lisort {text-align: center;}
     }
 
 .task-item{
-	box-shadow: 100px,10px,10px, black;
-	z-index: 100;
+	margin: 0 0 0 36px;
+	box-shadow: 5px 5px 5px #B0C0E0;
 }
+
+
+
