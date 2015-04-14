@@ -16,7 +16,8 @@ lisort {text-align: center;}
 }
 
 #detailedTask{
-	background-color: #F08070;
+	background-color: #F08080;
+	height: 500px;
 
 }
 .panel-transparent {
@@ -26,6 +27,20 @@ lisort {text-align: center;}
 .task-item{
 	margin: 0 0 0 36px;
 	box-shadow: 5px 5px 5px #B0C0E0;
+}
+
+#Delete{
+	 position: absolute;
+	 bottom: 0;
+	 right: 0;
+	 margin: 20px;
+	 
+}
+#hide{
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 20px;
 }
 
 

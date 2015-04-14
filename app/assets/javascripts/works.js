@@ -17,8 +17,8 @@ $(document).ready(function() {
     /* Act on the event */
     var confirm = false;
     bootbox.dialog({
-    message: "I am a custom dialog",
-    title: "Custom title",
+    message: "Delete?",
+    title: "It will delete the task from the list.",
     buttons: {
       success: {
         label: "Cancel!",
