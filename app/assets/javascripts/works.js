@@ -168,7 +168,7 @@ $(document).ready(function() {
             { 
               $("#addTask").val(" ");
               $("#addTask").attr("placeholder","Add a task here!");
-              $("#lisort").prepend('<li class="list-group-item" data-id='+data.id+'><input type="checkbox" class="completion_check" aria-label="Task Completed?"><span>'+name_tsk+'</span></li>');
+              $("#lisort").prepend('<li class="list-group-item task-item" data-id='+data.id+'><input type="checkbox" class="completion_check" aria-label="Task Completed?"><span>'+name_tsk+'</span></li>');
             }
           })
           .fail(function(XMLHttpRequest, textStatus, errorThrown) {
