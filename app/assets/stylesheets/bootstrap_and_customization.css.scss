@@ -7,11 +7,13 @@ $navbar-default-bg: #ecf0f1;
      text-align: center;
 }
 .navbar {
-	background-color: rgba(0,0,250,0.6);
 	color: white;
+	background-color: rgba(0,0,250,0.6);
+	
 }
 .navbar-brand{
 	color: white;
 	background-color: white;
 }
 
+.navbar-default .navbar-text a{color: white;}
