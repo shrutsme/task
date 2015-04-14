@@ -1,6 +1,9 @@
 $(document).ready(function() {
   
-  $("#lisort" ).sortable();
+  $("#lisort" ).sortable({
+     axis: "y"
+  });
+  
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
     $("#detailedTask").hide();
