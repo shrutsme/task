@@ -6,8 +6,9 @@ $(document).ready(function() {
   
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
-    $("#detailedTask").hide();
-    $("#taskList").velocity("reverse");
+    $("#detailedTask").velocity("transition.slideRightOut",2000);
+   // $("#detailedTask").hide();
+    $("#taskList").velocity("transition.slideLeftIn",2000);
   });
   var num = parseInt($('#completedTasks').text());
   if (num>0)
@@ -17,8 +18,8 @@ $(document).ready(function() {
     /* Act on the event */
     var confirm = false;
     bootbox.dialog({
-    message: "Delete?",
-    title: "It will delete the task from the list.",
+    message: "It will delete the task from the list.",
+    title: " Delete ?",
     buttons: {
       success: {
         label: "Cancel!",
@@ -43,7 +44,7 @@ $(document).ready(function() {
                  $(obj).remove();
                  $("#detailedTask").hide();
                //  $("#taskList").velocity({translateX: "70px"});
-                 $("#taskList").velocity("reverse");
+                 $("#taskList").velocity("transition.slideLeftIn",2000);
 
             })
             .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -79,12 +80,14 @@ $(document).ready(function() {
               $(liObj).remove();
               complete_success = true;
               var num = parseInt($('#completedTasks').text())+1;
+              var detailsObj = $('#detailedTask');
               $('#completedTasks').text(num);
               $("#showCompleted").show();
-              if ($("#detailedTask").is(':visible'))
+              if ($(detailsObj).is(':visible') && $(detailsObj).attr("data-id") == Id)
               {
-                $("#taskList").velocity("reverse");
-                $('#detailedTask').hide();
+                $("#taskList").velocity("transition.slideRightIn",2000);
+                $(detailsObj).hide();
+                
               }
             }
           })
@@ -99,7 +102,7 @@ $(document).ready(function() {
       var name_task = $(this).text();
       $("#detailedTask h2").html(name_task);
       $('#detailedTask').attr("data-id", Id)
-      $("#detailedTask").velocity("transition.bounceRightIn");
+      $("#detailedTask").velocity("transition.slideRightIn",2000);
       $('#descTask').val("");
       
       $.ajax({
