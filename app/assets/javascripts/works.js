@@ -6,8 +6,7 @@ $(document).ready(function() {
   
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
-    $("#detailedTask").velocity("transition.slideRightOut",2000);
-   // $("#detailedTask").hide();
+    $("#detailedTask").velocity("transition.slideLeftOut",2000);
     $("#taskList").velocity("transition.slideLeftIn",2000);
   });
   var num = parseInt($('#completedTasks').text());
@@ -43,7 +42,6 @@ $(document).ready(function() {
             .done(function() {  
                  $(obj).remove();
                  $("#detailedTask").hide();
-               //  $("#taskList").velocity({translateX: "70px"});
                  $("#taskList").velocity("transition.slideLeftIn",2000);
 
             })
@@ -85,7 +83,7 @@ $(document).ready(function() {
               $("#showCompleted").show();
               if ($(detailsObj).is(':visible') && $(detailsObj).attr("data-id") == Id)
               {
-                $("#taskList").velocity("transition.slideRightIn",2000);
+                $("#taskList").velocity("transition.slideLeftIn",2000);
                 $(detailsObj).hide();
                 
               }
@@ -98,11 +96,11 @@ $(document).ready(function() {
     else  
     { /* get the task details */
 
-      $("#taskList").velocity({translateX: "-70px"});
+      $("#taskList").velocity({translateX: "-70px",duration: 2000});
       var name_task = $(this).text();
       $("#detailedTask h2").html(name_task);
       $('#detailedTask').attr("data-id", Id)
-      $("#detailedTask").velocity("transition.slideRightIn",2000);
+      $("#detailedTask").velocity("transition.slideLeftIn",2000);
       $('#descTask').val("");
       
       $.ajax({

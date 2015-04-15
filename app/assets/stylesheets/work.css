@@ -16,8 +16,11 @@ lisort {text-align: center;}
 }
 
 #detailedTask{
-	background-color: #F08080;
+	border:1px solid #B0C0E0;
+	background-color: white;
 	height: 500px;
+	
+	
 
 }
 .panel-transparent {

@@ -1,9 +1,16 @@
-<h1 class="text-center ">Manage your daily tasks easily!!!</h1><br>
-<div class="form-group col-md-8 col-md-offset-2" >
-  <input type="text" class="form-control" id="addTask" placeholder="Add a task here!" size =100>
-</div>
 <div class="container">
   <div class="row">
+<h1 class="col-md-8 col-md-offset-2">Manage your daily tasks easily!!!</h1>
+</div>
+</div>
+
+<br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="form-group col-md-6 col-md-offset-2" >
+  <input type="text" class="form-control" id="addTask" placeholder="Add a task here!" >
+</div>
     <div class="col-md-6 col-md-offset-2" id="taskList">
       <ul id="lisort" class="list-group">
         <% @works.each do |work| %>
@@ -13,7 +20,7 @@
       <% end %>
       <% end %>
     </ul>
-    <div class="col-md-4 panel panel-default panel-transparent" id="showCompleted" style="display:none">
+    <div class="col-md-6 panel panel-default panel-transparent" id="showCompleted" style="display:none">
       <div >
         <span id="completedTasks"> <%= @works.select{|work| work.status ==true }.size %> </span> <span> Tasks Completed</span>
         
@@ -29,7 +36,7 @@
     </div>
     
     <button id="hide" class="btn btn-default btn-xs pull-left" aria-label="hide">
-    <i class="fa fa-chevron-circle-right"></i>
+    <i class="fa fa-chevron-circle-left"></i>
     </button>
     <button id="Delete" class="btn btn-danger btn-xs pull-right" aria-label="Delete">
     <i class="fa fa-trash-o "></i>
