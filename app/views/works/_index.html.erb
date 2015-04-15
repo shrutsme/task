@@ -15,7 +15,7 @@
     </ul>
     <div class="col-md-4 panel panel-default panel-transparent" id="showCompleted" style="display:none">
       <div >
-        <span id="completedTasks"> <%= @works.select{|work| work.status == "true" }.size %> </span> <span> Tasks Completed</span>
+        <span id="completedTasks"> <%= @works.select{|work| work.status ==true }.size %> </span> <span> Tasks Completed</span>
         
       </div>
       
