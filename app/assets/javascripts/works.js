@@ -1,4 +1,25 @@
 $(document).ready(function() {
+  var taskList = $("#taskList");
+  var constants = {
+    'list_left':"-70px",
+    'list_right':"0px"
+  };
+
+  function move() {
+    $(taskList).velocity({
+        left: constants.list_left, duration:4000
+    }, function() {
+        $(this).addClass("moved");
+    });
+  }
+  function back() {
+    $(taskList).velocity({
+        left: constants.list_right, duration:4000
+    }, function() {
+        $(this).removeClass("moved");
+    });
+  }
+
   
   $("#lisort" ).sortable({
      axis: "y"
@@ -6,9 +27,14 @@ $(document).ready(function() {
   
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
+   
 
-    $("#detailedTask").velocity("transition.slideLeftOut",1000);
-    $("#taskList").velocity("transition.slideLeftIn",2000);
+  //  $("#detailedTask").velocity("transition.slideLeftOut",1000);
+  $("#detailedTask").velocity("transition.slideLeftOut",800);
+    if ($(taskList).hasClass('moved'))
+      back();
+
+  //  $("#taskList").velocity("transition.slideLeftIn",2000, "linear");
   });
   var num = parseInt($('#completedTasks').text());
   if (num>0)
@@ -18,18 +44,18 @@ $(document).ready(function() {
     /* Act on the event */
     var confirm = false;
     bootbox.dialog({
-    message: "It will delete the task from the list.",
-    title: " Delete ?",
+    message: "It will delete the task from to-do list.",
+    title: " Sure you want to delete?",
     buttons: {
       success: {
-        label: "Cancel!",
+        label: "Cancel",
         className: "btn-default",
         callback: function() {
           confirm = true;
         }
       },
       danger: {
-        label: "OK!",
+        label: "OK",
         className: "btn-danger",
         callback: function() {
           var Id = $('#detailedTask').attr("data-id");
@@ -45,7 +71,10 @@ $(document).ready(function() {
                  var detailsObj = $("#detailedTask");
                  $(detailsObj).hide();
                  //$(detailsObj).children("div").hide();
-                 $("#taskList").velocity("transition.slideLeftIn",2000);
+                 //$("#taskList").velocity("transition.slideLeftIn",2000);
+                 if ($(taskList).hasClass('moved'))
+                  back();
+
 
             })
             .fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -86,7 +115,9 @@ $(document).ready(function() {
               $("#showCompleted").show();
               if ($(detailsObj).is(':visible') && $(detailsObj).attr("data-id") == Id)
               {
-                $("#taskList").velocity("transition.slideLeftIn",2000);
+              //  $("#taskList").velocity("transition.slideLeftIn",2000);
+                if ($(taskList).hasClass('moved'))
+                  back();
                 $(detailsObj).hide();
                 
               }
@@ -99,11 +130,14 @@ $(document).ready(function() {
     else  
     { /* get the task details */
 
-      $("#taskList").velocity({translateX: "-70px",duration: 2000});
+      
       var name_task = $(this).text();
       $("#detailedTask h2").html(name_task);
-      $('#detailedTask').attr("data-id", Id)
-      $("#detailedTask").velocity("transition.slideLeftIn",2000);
+      $('#detailedTask').attr("data-id", Id);
+      if (!($(taskList).hasClass('moved')))
+        move();
+    //  $("#taskList").velocity({translateX: "-70px",duration: 6000});
+      $("#detailedTask").velocity("transition.slideLeftIn",800);
       $('#descTask').val("");
       
       $.ajax({
