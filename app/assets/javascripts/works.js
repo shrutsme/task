@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var taskList = $("#taskList");
+    var detailsObj = $('#detailedTask');
     var constants = {
         'list_left': "-70px",
         'list_right': "0px"
@@ -30,6 +31,8 @@ $(document).ready(function() {
 
     $("#descTask").fadeTo(0, .5);
     $("#hide").click(function(event) {
+        if ($(detailsObj).hasClass('showDetails'))
+            $(detailsObj).removeClass('showDetails')
 
         $("#detailedTask").velocity("transition.slideLeftOut", 800);
         if ($(taskList).hasClass('moved'))
@@ -67,8 +70,10 @@ $(document).ready(function() {
                             })
                             .done(function() {
                                 $(obj).remove();
-                                var detailsObj = $("#detailedTask");
+
                                 $(detailsObj).hide();
+                                if ($(detailsObj).hasClass('showDetails'))
+                                    $(detailsObj).removeClass('showDetails')
                                 if ($(taskList).hasClass('moved'))
                                     back();
 
@@ -108,13 +113,16 @@ $(document).ready(function() {
                         $(liObj).remove();
                         complete_success = true;
                         var num = parseInt($('#completedTasks').text()) + 1;
-                        var detailsObj = $('#detailedTask');
+
                         $('#completedTasks').text(num);
                         $("#showCompleted").show();
                         if ($(detailsObj).is(':visible') && $(detailsObj).attr("data-id") == Id) {
                             if ($(taskList).hasClass('moved'))
                                 back();
                             $(detailsObj).hide();
+                            if ($(detailsObj).hasClass('showDetails'))
+                                $(detailsObj).removeClass('showDetails')
+
 
                         }
                     }
@@ -128,7 +136,10 @@ $(document).ready(function() {
             $('#detailedTask').attr("data-id", Id);
             if (!($(taskList).hasClass('moved')))
                 move();
-            $("#detailedTask").velocity("transition.slideLeftIn", 800);
+            if (!$(detailsObj).hasClass('showDetails')) {
+                $(detailsObj).addClass('showDetails')
+                $("#detailedTask").velocity("transition.slideLeftIn", 800);
+            }
             $('#descTask').val("");
 
             $.ajax({
