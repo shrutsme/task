@@ -15,9 +15,9 @@
     <ul class="nav navbar-nav navbar-right">
       <li><p class="navbar-text"><%= link_to "Home", root_path %></p></li>
         <% if user_signed_in? %>
-          <li><p class="navbar-text"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p></li>
+          <li><p class="navbar-text" style="padding-right: 10px"><%= link_to "Log out", destroy_user_session_path, method: :delete %></p></li>
         <% else %>
-          <li><p class="navbar-text"><%= link_to "Sign in", new_user_session_path %></p></li>
+          <li><p class="navbar-text" style="padding-right: 10px"><%= link_to "Sign in", new_user_session_path %></p></li>
         <% end %>
     </ul>
   </div><!-- /.navbar-collapse -->

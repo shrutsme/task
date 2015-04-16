@@ -6,7 +6,8 @@ $(document).ready(function() {
   
   $("#descTask").fadeTo( 0, .5);
   $("#hide").click(function(event) {
-    $("#detailedTask").velocity("transition.slideLeftOut",2000);
+
+    $("#detailedTask").velocity("transition.slideLeftOut",1000);
     $("#taskList").velocity("transition.slideLeftIn",2000);
   });
   var num = parseInt($('#completedTasks').text());
@@ -41,7 +42,9 @@ $(document).ready(function() {
               })
             .done(function() {  
                  $(obj).remove();
-                 $("#detailedTask").hide();
+                 var detailsObj = $("#detailedTask");
+                 $(detailsObj).hide();
+                 //$(detailsObj).children("div").hide();
                  $("#taskList").velocity("transition.slideLeftIn",2000);
 
             })
