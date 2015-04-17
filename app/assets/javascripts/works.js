@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var taskList = $("#taskList");
+    $(taskList).scrollHeight;
     var detailsObj = $('#detailedTask');
     var constants = {
         'list_left': "-70px",
