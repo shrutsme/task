@@ -27,7 +27,8 @@ $(document).ready(function() {
 
 
     $("#lisort").sortable({
-        axis: "y"
+        axis: "y",
+        containment: "parent"
     });
 
     $("#descTask").fadeTo(0, .5);
