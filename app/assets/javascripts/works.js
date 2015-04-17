@@ -195,7 +195,7 @@ $(document).ready(function() {
     $("#addTask").keyup(function(e) {
         if (e.keyCode == 13) {
             var name_tsk = document.getElementById("addTask").value;
-            if (name_tsk.length > 0) {
+            if (name_tsk.length > 1) {
                 $.ajax({
                         type: 'POST',
                         url: '../works',
@@ -210,7 +210,7 @@ $(document).ready(function() {
                         if (data.id != '0') {
                             $("#addTask").val(" ");
                             $("#addTask").attr("placeholder", "Add a task here!");
-                            $("#lisort").prepend('<li class="list-group-item task-item" data-id=' + data.id + '><input type="checkbox" class="completion_check" aria-label="Task Completed?"><span>' + name_tsk + '</span></li>');
+                            $("#lisort").prepend('<li class="list-group-item task-item" data-id=' + data.id + '><input type="checkbox" class="completion_check" aria-label="Task Completed?"><span> ' + name_tsk + '</span></li>');
                         }
                     })
                     .fail(function(XMLHttpRequest, textStatus, errorThrown) {
