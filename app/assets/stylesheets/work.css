@@ -18,7 +18,7 @@ lisort {text-align: center;}
 #detailedTask{
 	border:1px solid #B0C0E0;
 	background-color: white;
-	height: 500px;
+	height: 450px;
 	
 	
 
@@ -47,7 +47,7 @@ lisort {text-align: center;}
 }
 
 #lisort{
-	 max-height: 500px;
+	 max-height: 450px;
 	 overflow: auto; 
 
 }
